@@ -1,26 +1,34 @@
+// app.vue
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="contianer mx-auto mt-4" style="width:300px">
+<Quiz v-bind:quiz="mondai" />
+<Answer v-bind:answer="kotae.a" />
+<Answer v-bind:answer="kotae.b" />
+<Answer v-bind:answer="kotae.c" />
+<Answer v-bind:answer="kotae.d" />
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Quiz from './components/Quiz.vue';
+import Answer from './components/Answer.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Quiz,
+    Answer
+  },
+  data() {
+    return {
+      mondai:"世界で一番高い山は？",
+      kotae:{
+      a:"東京タワー",
+      b:"ヒマダナ山脈",
+      c:"エベレスト",
+      d:"琵琶湖"
+      }
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
