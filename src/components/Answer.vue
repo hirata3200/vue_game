@@ -1,5 +1,7 @@
 <template>
-  <div v-on:click="doAction">{{answer}}</div>
+<div class="alert alert-primary">
+  <div v-on:click="doAction"><p ref="msg">{{answer}}</p></div>
+  </div>
 </template>
 
 <script>
@@ -10,12 +12,10 @@ export default {
   },
   methods: {
       doAction(){
-        // console.log("正解")
-        // console.log(this.answer)
         if(this.answer === "エベレスト"){
-          console.log("正解")
+          this.$refs.msg.innerHTML="正解"
         }else{
-          console.log("不正解")
+          this.$refs.msg.innerHTML="不正解"
         }
       }
   },
