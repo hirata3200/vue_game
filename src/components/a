@@ -1,0 +1,76 @@
+<!-- ※answer -->
+<template>
+<div class="alert alert-primary">
+  <div v-on:click="doAction"><p ref="msg">{{answer}}</p></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Answer",
+  props: {
+    answer: String
+  },
+  methods: {
+      doAction(){
+        if(this.answer === "エベレスト"){
+          this.$refs.msg.innerHTML="正解"
+        }else{
+          this.$refs.msg.innerHTML="不正解"
+        }
+      }
+  },
+};
+</script>
+
+<!-- ※quiz -->
+<template>
+    <div>
+      {{quiz}}
+      </div>
+    </template>
+    
+    <script>
+    export default {
+      name: 'Quiz',
+      props: {
+        quiz: String,
+      }
+    }
+    </script>
+
+    <!-- app.vue -->
+    // app.vue
+<template>
+<div class="contianer mx-auto mt-4" style="width:300px">
+<Quiz v-bind:quiz="mondai" />
+<Answer v-bind:answer="kotae.a" />
+<Answer v-bind:answer="kotae.b" />
+<Answer v-bind:answer="kotae.c" />
+<Answer v-bind:answer="kotae.d" />
+</div>
+</template>
+
+<script>
+import Quiz from './components/marubatu.vue';
+import Answer from './components/Answer.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Quiz,
+    Answer
+  },
+  data() {
+    return {
+      mondai:"世界で一番高い山は？",
+      kotae:{
+      a:"東京タワー",
+      b:"ヒマダナ山脈",
+      c:"エベレスト",
+      d:"琵琶湖"
+      }
+    }
+  }
+}
+</script>

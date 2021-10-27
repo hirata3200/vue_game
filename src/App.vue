@@ -1,34 +1,28 @@
-// app.vue
 <template>
-<div class="contianer mx-auto mt-4" style="width:300px">
-<Quiz v-bind:quiz="mondai" />
-<Answer v-bind:answer="kotae.a" />
-<Answer v-bind:answer="kotae.b" />
-<Answer v-bind:answer="kotae.c" />
-<Answer v-bind:answer="kotae.d" />
-</div>
+  <div class="board">
+    <Marubatu v-for="n of 9" v-bind:key="n" />
+  </div>
 </template>
 
 <script>
-import Quiz from './components/Quiz.vue';
-import Answer from './components/Answer.vue';
-
+import Marubatu from "./components/Marubatu.vue";
 export default {
-  name: 'App',
-  components: {
-    Quiz,
-    Answer
-  },
+  name: "App",
   data() {
     return {
-      mondai:"世界で一番高い山は？",
-      kotae:{
-      a:"東京タワー",
-      b:"ヒマダナ山脈",
-      c:"エベレスト",
-      d:"琵琶湖"
-      }
+      count: 0,
     }
-  }
-}
+  },
+  components: {
+    Marubatu,
+  },
+};
 </script>
+
+<style>
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 450px;
+}
+</style>
